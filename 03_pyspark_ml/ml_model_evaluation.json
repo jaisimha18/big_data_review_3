@@ -1,0 +1,177 @@
+{
+  "dataset_sample_size": 120000,
+  "train_samples": 96000,
+  "test_samples": 24000,
+  "features_used": [
+    "Hour",
+    "DayOfWeek",
+    "Month",
+    "Duration_Minutes",
+    "Is_Rush_Hour",
+    "Is_Weekend",
+    "Temperature_F",
+    "Humidity_Pct",
+    "Pressure_in",
+    "Visibility_mi",
+    "Wind_Speed_mph",
+    "Precipitation_in",
+    "Distance_mi",
+    "Traffic_Signal",
+    "Junction",
+    "Crossing",
+    "Stop",
+    "Amenity",
+    "Railway",
+    "Weather_Code",
+    "Is_Day"
+  ],
+  "target_variable": "Is_Severe (Binary: 0=Minor [Sev 1-2], 1=Severe [Sev 3-4])",
+  "primary_model": "Random Forest Classifier",
+  "baseline_model": "Logistic Regression",
+  "metrics": {
+    "random_forest": {
+      "accuracy": 0.7257,
+      "precision": 0.8262,
+      "recall": 0.7257,
+      "f1_score": 0.7522,
+      "roc_auc": 0.8136,
+      "confusion_matrix": [
+        [
+          13770,
+          5552
+        ],
+        [
+          1032,
+          3646
+        ]
+      ],
+      "training_time_seconds": 0.85
+    },
+    "logistic_regression": {
+      "accuracy": 0.5129,
+      "precision": 0.7639,
+      "recall": 0.5129,
+      "f1_score": 0.5563,
+      "roc_auc": 0.6649,
+      "confusion_matrix": [
+        [
+          8736,
+          10586
+        ],
+        [
+          1105,
+          3573
+        ]
+      ],
+      "training_time_seconds": 1.51
+    }
+  },
+  "feature_importances": [
+    {
+      "feature": "Duration_Minutes",
+      "importance": 0.3111,
+      "percentage": 31.11
+    },
+    {
+      "feature": "Distance_mi",
+      "importance": 0.2532,
+      "percentage": 25.32
+    },
+    {
+      "feature": "Traffic_Signal",
+      "importance": 0.0774,
+      "percentage": 7.74
+    },
+    {
+      "feature": "Crossing",
+      "importance": 0.0586,
+      "percentage": 5.86
+    },
+    {
+      "feature": "Pressure_in",
+      "importance": 0.0502,
+      "percentage": 5.02
+    },
+    {
+      "feature": "Wind_Speed_mph",
+      "importance": 0.0496,
+      "percentage": 4.96
+    },
+    {
+      "feature": "Temperature_F",
+      "importance": 0.0315,
+      "percentage": 3.15
+    },
+    {
+      "feature": "Hour",
+      "importance": 0.0279,
+      "percentage": 2.79
+    },
+    {
+      "feature": "Humidity_Pct",
+      "importance": 0.026,
+      "percentage": 2.6
+    },
+    {
+      "feature": "Month",
+      "importance": 0.0239,
+      "percentage": 2.39
+    },
+    {
+      "feature": "Stop",
+      "importance": 0.0194,
+      "percentage": 1.94
+    },
+    {
+      "feature": "DayOfWeek",
+      "importance": 0.0148,
+      "percentage": 1.48
+    },
+    {
+      "feature": "Weather_Code",
+      "importance": 0.0109,
+      "percentage": 1.09
+    },
+    {
+      "feature": "Is_Weekend",
+      "importance": 0.0098,
+      "percentage": 0.98
+    },
+    {
+      "feature": "Visibility_mi",
+      "importance": 0.0087,
+      "percentage": 0.87
+    },
+    {
+      "feature": "Junction",
+      "importance": 0.0069,
+      "percentage": 0.69
+    },
+    {
+      "feature": "Precipitation_in",
+      "importance": 0.0054,
+      "percentage": 0.54
+    },
+    {
+      "feature": "Is_Day",
+      "importance": 0.0049,
+      "percentage": 0.49
+    },
+    {
+      "feature": "Is_Rush_Hour",
+      "importance": 0.0048,
+      "percentage": 0.48
+    },
+    {
+      "feature": "Amenity",
+      "importance": 0.0038,
+      "percentage": 0.38
+    },
+    {
+      "feature": "Railway",
+      "importance": 0.0013,
+      "percentage": 0.13
+    }
+  ],
+  "total_execution_time_seconds": 2.72
+}

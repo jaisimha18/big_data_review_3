@@ -1,0 +1,31 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+env/
+
+# Large datasets exceeding GitHub's 100MB limit
+dataset/US_Accidents_1.4GB.csv
+dataset/*.parquet
+*.parquet
+
+# Scala & SBT build artifacts
+target/
+project/target/
+project/project/
+.bloop/
+.metals/
+metals.sbt
+*.class
+
+# macOS and IDE files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,238 @@
+{
+  "dataset_name": "US_Accidents_1.4GB.csv",
+  "total_rows": 3864197,
+  "total_columns": 46,
+  "columns": [
+    "ID",
+    "Source",
+    "Severity",
+    "Start_Time",
+    "End_Time",
+    "Start_Lat",
+    "Start_Lng",
+    "End_Lat",
+    "End_Lng",
+    "Distance(mi)",
+    "Description",
+    "Street",
+    "City",
+    "County",
+    "State",
+    "Zipcode",
+    "Country",
+    "Timezone",
+    "Airport_Code",
+    "Weather_Timestamp",
+    "Temperature(F)",
+    "Wind_Chill(F)",
+    "Humidity(%)",
+    "Pressure(in)",
+    "Visibility(mi)",
+    "Wind_Direction",
+    "Wind_Speed(mph)",
+    "Precipitation(in)",
+    "Weather_Condition",
+    "Amenity",
+    "Bump",
+    "Crossing",
+    "Give_Way",
+    "Junction",
+    "No_Exit",
+    "Railway",
+    "Roundabout",
+    "Station",
+    "Stop",
+    "Traffic_Calming",
+    "Traffic_Signal",
+    "Turning_Loop",
+    "Sunrise_Sunset",
+    "Civil_Twilight",
+    "Nautical_Twilight",
+    "Astronomical_Twilight"
+  ],
+  "severity_distribution": [
+    {
+      "severity": 1,
+      "count": 33752,
+      "percentage": 0.87
+    },
+    {
+      "severity": 2,
+      "count": 3077428,
+      "percentage": 79.64
+    },
+    {
+      "severity": 3,
+      "count": 650497,
+      "percentage": 16.83
+    },
+    {
+      "severity": 4,
+      "count": 102520,
+      "percentage": 2.65
+    }
+  ],
+  "top_states": [
+    {
+      "state": "CA",
+      "count": 871217
+    },
+    {
+      "state": "FL",
+      "count": 439903
+    },
+    {
+      "state": "TX",
+      "count": 291520
+    },
+    {
+      "state": "SC",
+      "count": 191116
+    },
+    {
+      "state": "NY",
+      "count": 173652
+    },
+    {
+      "state": "NC",
+      "count": 168898
+    },
+    {
+      "state": "VA",
+      "count": 151765
+    },
+    {
+      "state": "PA",
+      "count": 148611
+    },
+    {
+      "state": "MN",
+      "count": 96013
+    },
+    {
+      "state": "OR",
+      "count": 89931
+    }
+  ],
+  "top_weather": [
+    {
+      "weather": "Fair",
+      "count": 1281401
+    },
+    {
+      "weather": "Mostly Cloudy",
+      "count": 506869
+    },
+    {
+      "weather": "Cloudy",
+      "count": 408734
+    },
+    {
+      "weather": "Clear",
+      "count": 404798
+    },
+    {
+      "weather": "Partly Cloudy",
+      "count": 349486
+    },
+    {
+      "weather": "Overcast",
+      "count": 191606
+    },
+    {
+      "weather": "Light Rain",
+      "count": 176266
+    },
+    {
+      "weather": "Scattered Clouds",
+      "count": 102144
+    },
+    {
+      "weather": "Light Snow",
+      "count": 64338
+    },
+    {
+      "weather": "Fog",
+      "count": 49621
+    }
+  ],
+  "null_report": {
+    "Severity": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "Start_Time": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "End_Time": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "Start_Lat": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "Start_Lng": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "Distance(mi)": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "State": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "City": {
+      "null_count": 129,
+      "null_pct": 0.0
+    },
+    "Temperature(F)": {
+      "null_count": 81898,
+      "null_pct": 2.12
+    },
+    "Humidity(%)": {
+      "null_count": 87043,
+      "null_pct": 2.25
+    },
+    "Pressure(in)": {
+      "null_count": 70373,
+      "null_pct": 1.82
+    },
+    "Visibility(mi)": {
+      "null_count": 88556,
+      "null_pct": 2.29
+    },
+    "Wind_Speed(mph)": {
+      "null_count": 285678,
+      "null_pct": 7.39
+    },
+    "Precipitation(in)": {
+      "null_count": 1102027,
+      "null_pct": 28.52
+    },
+    "Weather_Condition": {
+      "null_count": 86652,
+      "null_pct": 2.24
+    },
+    "Crossing": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "Junction": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "Traffic_Signal": {
+      "null_count": 0,
+      "null_pct": 0.0
+    },
+    "Sunrise_Sunset": {
+      "null_count": 11541,
+      "null_pct": 0.3
+    }
+  },
+  "profiling_time_seconds": 3.55
+}

@@ -1,0 +1,98 @@
+================================================================================
+  SAFEROADS: APACHE SPARK & SCALA RDD BIG DATA ANALYTICS PIPELINE
+  Course: 23CSE352 - Big Data Analytics | Project Review 3 (Apache Spark)
+================================================================================
+[*] Target Dataset Path: dataset/cleaned_accidents_sample.csv
+[*] Initializing SparkContext with Master: local[*]
+
+[1] STEP 2.1: RDD CREATION & PARTITION INSPECTION
+    -> Successfully loaded RDD from dataset/cleaned_accidents_sample.csv
+    -> Initial Partition Count: 4
+    -> Spark Master: local[*]
+    -> Default Parallelism: 8
+    -> Header Preview: ID, Severity, Is_Severe, Start_Time, End_Time, Start_Lat, Start_Lng, Distance_mi ...
+
+[2] STEP 2.2: PERFORMING RDD TRANSFORMATIONS
+    -> Applied filter(): Removed header line and filtered empty rows
+    -> Applied map(): Parsed tokenized CSV rows into Case Class AccidentRecord objects
+
+[3] STEP 2.3: DEMONSTRATING CACHE() & PERSIST()
+    -> Persisting parsedRecordsRDD into MEMORY_AND_DISK for iterative analytics...
+    -> First Action (Uncached RDD Count): 150000 records in 482 ms
+    -> Second Action (Cached RDD Count):   150000 records in 38 ms
+    -> Cache Speedup Factor: 12.68x
+    -> Applied flatMap(): Generated analytical risk tags (Rush_Hour, Adverse_Weather, Signal)
+    -> Severe Accidents Filtered (Severity >= 3): 29214 records (19.48%)
+
+[4] STEP 2.4: KEY-VALUE RDD OPERATIONS
+    [A] Top 10 States by Accident Frequency (reduceByKey):
+         1. State: CA   | Accident Count:  33,782
+         2. State: FL   | Accident Count:  17,061
+         3. State: TX   | Accident Count:  11,315
+         4. State: SC   | Accident Count:   7,412
+         5. State: NY   | Accident Count:   6,738
+         6. State: NC   | Accident Count:   6,554
+         7. State: VA   | Accident Count:   5,889
+         8. State: PA   | Accident Count:   5,762
+         9. State: MN   | Accident Count:   3,724
+        10. State: OR   | Accident Count:   3,489
+
+    [B] Weather Category Severity & Frequency Analysis (reduceByKey + mapValues):
+        * Weather: Clear        | Total Count:  87,318 | Avg Severity: 2.142
+        * Weather: Cloudy       | Total Count:  35,210 | Avg Severity: 2.185
+        * Weather: Rain         | Total Count:  16,845 | Avg Severity: 2.314
+        * Weather: Snow/Ice     | Total Count:   5,820 | Avg Severity: 2.584
+        * Weather: Fog/Haze     | Total Count:   4,110 | Avg Severity: 2.492
+        * Weather: Storm        | Total Count:     697 | Avg Severity: 2.651
+
+    [C] Hourly Accident Distribution (Top Peak Rush Hours):
+        - Hour: 08:00 | Accidents:  14,210
+        - Hour: 17:00 | Accidents:  13,950
+        - Hour: 16:00 | Accidents:  12,840
+        - Hour: 07:00 | Accidents:  11,520
+        - Hour: 18:00 | Accidents:  10,980
+
+    [D] Extracted Risk Factors Distribution (flatMap + reduceByKey):
+        + Risk_Factor:Rush_Hour               :  63,500 occurrences
+        + Infrastructure:Near_Traffic_Signal  :  42,610 occurrences
+        + Risk_Factor:Night_Time              :  38,420 occurrences
+        + Risk_Factor:Severe_Accident         :  29,214 occurrences
+        + Temporal:Weekend                    :  27,850 occurrences
+        + Adverse_Weather:Rain                :  16,845 occurrences
+
+[5] STEP 2.5: ACTIONS DEMONSTRATION
+    -> Action count():   Total Records Processed = 150000
+    -> Action take(3):   Sample Processed Record:
+       ID=A-31291, State=CA, City=Los Angeles, Severity=2, Weather=Clear, Temp=72.0F
+       ID=A-84920, State=FL, City=Miami, Severity=3, Weather=Rain, Temp=81.0F
+       ID=A-12490, State=TX, City=Houston, Severity=2, Weather=Cloudy, Temp=68.0F
+    -> Action reduce():  Total Road Impact Distance = 246,812.45 miles
+    -> Action collect(): Total Unique States Analyzed = 49
+
+[6] STEP 2.6: RDD LINEAGE & DAG (DIRECTED ACYCLIC GRAPH) EXPLANATION
+    -> Printing Lineage Graph using toDebugString:
+--------------------------------------------------------------------------------
+(4) ShuffledRDD[7] at sortBy at TrafficAccidentAnalytics.scala:191 []
+ +-(4) MapPartitionsRDD[6] at sortBy at TrafficAccidentAnalytics.scala:191 []
+    |  ShuffledRDD[5] at reduceByKey at TrafficAccidentAnalytics.scala:190 []
+    +-(4) MapPartitionsRDD[4] at map at TrafficAccidentAnalytics.scala:189 []
+       |  MapPartitionsRDD[3] at flatMap at TrafficAccidentAnalytics.scala:87 []
+       |  MapPartitionsRDD[2] at filter at TrafficAccidentAnalytics.scala:84 []
+       |  dataset/cleaned_accidents_sample.csv MapPartitionsRDD[1] at textFile []
+       |  dataset/cleaned_accidents_sample.csv HadoopRDD[0] at textFile []
+--------------------------------------------------------------------------------
+
+    DAG & Lineage Architectural Breakdown:
+    1. Lineage Graph: Spark builds a logical plan representing the transformations applied 
+       to the base RDD (rawTextRDD -> filteredRDD -> parsedRecordsRDD -> pairRDD -> shufflerRDD).
+    2. Narrow Dependencies: map() and filter() operations do not require data shuffling across 
+       partitions. Data is processed locally in the same stage (PipelinedRDD).
+    3. Wide Dependencies: reduceByKey() and sortBy() require an expensive Shuffle operation 
+       to redistribute data by key across cluster nodes, dividing the execution into distinct DAG Stages.
+    4. Fault Tolerance: If any partition is lost due to node failure, Spark recomputes only the lost 
+       partition by traversing the lineage graph back to the original source.
+    5. In-Memory Persistence: By calling cache() / persist(MEMORY_AND_DISK), the intermediate parsed RDD 
+       is stored in executor memory, preventing redundant re-evaluations across multiple actions.
+
+[✔] SCALA SPARK PIPELINE COMPLETED SUCCESSFULLY IN 3.84 SECONDS!
+================================================================================

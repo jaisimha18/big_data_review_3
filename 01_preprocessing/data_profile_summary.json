@@ -1,0 +1,121 @@
+{
+  "pipeline_name": "SafeRoads US Accidents Data Cleaning & Preprocessing",
+  "raw_csv_path": "dataset/US_Accidents_1.4GB.csv",
+  "raw_record_count": 3864197,
+  "cleaned_record_count": 3864157,
+  "dropped_invalid_rows": 40,
+  "retention_rate_pct": 100.0,
+  "parquet_output_path": "dataset/cleaned_accidents.parquet",
+  "parquet_size_mb": 183.45,
+  "sample_csv_path": "dataset/cleaned_accidents_sample.csv",
+  "sample_size_mb": 29.11,
+  "execution_time_seconds": 3.65,
+  "severity_distribution": [
+    {
+      "severity": 1,
+      "count": 33752,
+      "pct": 0.87
+    },
+    {
+      "severity": 2,
+      "count": 3077406,
+      "pct": 79.64
+    },
+    {
+      "severity": 3,
+      "count": 650484,
+      "pct": 16.83
+    },
+    {
+      "severity": 4,
+      "count": 102515,
+      "pct": 2.65
+    }
+  ],
+  "weather_category_distribution": [
+    {
+      "category": "Clear",
+      "count": 1704042,
+      "pct": 44.1
+    },
+    {
+      "category": "Cloudy",
+      "count": 1580723,
+      "pct": 40.91
+    },
+    {
+      "category": "Rain",
+      "count": 269958,
+      "pct": 6.99
+    },
+    {
+      "category": "Fog/Haze",
+      "count": 101291,
+      "pct": 2.62
+    },
+    {
+      "category": "Other",
+      "count": 88721,
+      "pct": 2.3
+    },
+    {
+      "category": "Snow/Ice",
+      "count": 86822,
+      "pct": 2.25
+    },
+    {
+      "category": "Storm",
+      "count": 32600,
+      "pct": 0.84
+    }
+  ],
+  "top_10_states": [
+    {
+      "state": "CA",
+      "count": 871217
+    },
+    {
+      "state": "FL",
+      "count": 439903
+    },
+    {
+      "state": "TX",
+      "count": 291520
+    },
+    {
+      "state": "SC",
+      "count": 191115
+    },
+    {
+      "state": "NY",
+      "count": 173652
+    },
+    {
+      "state": "NC",
+      "count": 168898
+    },
+    {
+      "state": "VA",
+      "count": 151765
+    },
+    {
+      "state": "PA",
+      "count": 148608
+    },
+    {
+      "state": "MN",
+      "count": 96012
+    },
+    {
+      "state": "OR",
+      "count": 89923
+    }
+  ],
+  "road_infrastructure_presence": {
+    "traffic_signals": 571390,
+    "junctions": 285479,
+    "crossings": 436633,
+    "stop_signs": 107048,
+    "railways": 33597
+  }
+}
